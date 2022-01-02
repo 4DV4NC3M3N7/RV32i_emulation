@@ -3,3 +3,22 @@ RISCV rv32 base-integer emulation
 With 40 instructions.
 
 ![image](https://user-images.githubusercontent.com/39961019/146964111-f6b25b9c-53be-4874-80c8-1a6d4a6496d6.png)
+
+running an example 
+
+ADdi x6,x6,4
+
+addi x7,X7,-3
+
+AdDi x6,x6,-1
+
+BNE X7,x6,-4
+
+sb x6,0(x0)
+
+lbu x8,0(x0)
+
+EBREAK
+
+result: 
+![image](https://user-images.githubusercontent.com/39961019/147866464-310702aa-3a59-4965-a923-f9793bc999af.png)
