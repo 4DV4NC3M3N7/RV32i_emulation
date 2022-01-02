@@ -80,11 +80,27 @@ Word Reg_reg(int imm_7, int RSC_2, int RSC_1, int funct_3, int RSD, int opcode)
     inst = (imm_7 << 25) + (RSC_2 << 20) + (RSC_1 << 15) + (funct_3 << 12) + (RSD << 7) + opcode;
     return inst;
 }
+Word Branch(int imm12,int imm_6, int RSC_2, int RSC_1,int funct_3,int imm_4,int imm11,int opcode) 
+{
+    Word inst;
+    //========================================
+    imm12 &= 0x1;
+    imm_6 &= 0x3f;
+    RSC_2 &= 0x1f;
+    RSC_1 &= 0x1f;
+    funct_3 &= 0x7;
+    imm_4 &= 0xf;
+    imm11 &= 0x1;
+    opcode &= 0x7f;
+    //========================================
+    inst = (imm12 << 31) + (imm_6 << 25) + (RSC_2 << 20) + (RSC_1 << 15) + (funct_3 << 12) + (imm_4 << 8) + (imm11 << 7) + opcode;
+    return inst;
+}
 Word LUI(int imm_20, int RSD, int opcode)
 {
     Word inst;
     //========================================
-    imm_20 &= 0x7f;
+    imm_20 &= 0xfffff;
     RSD &= 0x1f;
     opcode &= 0x7f;
     //========================================
@@ -95,10 +111,55 @@ Word AUIPC(int imm_20, int RSD, int opcode)
 {
     Word inst;
     //========================================
-    imm_20 &= 0x7f;
+    imm_20 &= 0xfffff;
     RSD &= 0x1f;
     opcode &= 0x7f;
     //========================================
     inst = (imm_20 << 12) + (RSD << 7) + opcode;
     return inst;
 }
+Word Branches(int imm12, int imm_6,int RSC_2,int RSC_1,int funct_3,int imm_4,int imm11,int opcode) 
+{
+    Word inst;
+    //========================================
+    imm12 &= (imm12 == 1)?0x1:0x0;
+    imm_6 = 0x3f;
+    RSC_2 &= 0x1f;
+    RSC_1 &= 0x1f;
+    funct_3 &= 0x7;
+    imm_4 &= 0xf;
+    imm11 &= (imm11 == 1) ? 0x1 : 0x0 ;
+    opcode &= 0x7f;
+    //========================================
+    inst = (imm12 << 31) + (imm_6 << 25) + (RSC_2 << 20) + (RSC_1 << 15) + (funct_3 << 12) + (imm_4 << 8) + (imm11 << 7) + opcode;
+    return inst;
+}
+//0x1,0x3fe,0x1, 0xff,x_2,INST_unconditional_jump_opcode
+Word JAL(int imm20, int imm_10,int imm11,int imm_8,int RSD,int opcode) 
+{
+    Word inst;
+    //========================================
+    imm20 &= (imm20 == 1) ? 0x1 : 0x0;
+    imm_10 &= 0x3ff;
+    imm11 &= (imm11 == 1) ? 0x1 : 0x0;
+    imm_8 &= 0xff;
+    RSD &= 0x1f;
+    opcode &= 0x7f;
+    //========================================
+    inst = (imm20 << 31) + (imm_10 << 21) + (imm11 << 20) + (imm_8 << 12) + (RSD << 7) + opcode;
+    return inst;
+}
+Word JALR(int imm_12,int RSB,int funct_3,int RSD,int opcode) 
+{
+    Word inst;
+    //========================================
+    imm_12 &= 0xfff;
+    RSB &= 0x1f;
+    funct_3 &= 0x7;
+    RSD &= 0x1f;
+    opcode &= 0x7f;
+    //========================================
+    inst = (imm_12 << 20) + (RSB << 15) + (funct_3 << 12) + (RSD << 7) + opcode;
+    return inst;
+}
+
