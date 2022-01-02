@@ -4,6 +4,14 @@ With 40 instructions.
 
 ![image](https://user-images.githubusercontent.com/39961019/146964111-f6b25b9c-53be-4874-80c8-1a6d4a6496d6.png)
 
+The program design:
+![image](https://user-images.githubusercontent.com/39961019/147882584-6ab3cbc9-703b-4980-90f0-7643807218ab.png)
+
+the memory:
+
+![image](https://user-images.githubusercontent.com/39961019/147882595-965fcd74-2574-471b-aab3-29fe9d37bf85.png)
+
+
 running an example 
 
 ADdi x6,x6,4
