@@ -5,6 +5,7 @@ With 40 instructions.
 ![image](https://user-images.githubusercontent.com/39961019/146964111-f6b25b9c-53be-4874-80c8-1a6d4a6496d6.png)
 
 The program design:
+
 ![image](https://user-images.githubusercontent.com/39961019/147882584-6ab3cbc9-703b-4980-90f0-7643807218ab.png)
 
 the memory:
