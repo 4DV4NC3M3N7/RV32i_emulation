@@ -1,4 +1,5 @@
 # RV32i_emulation
+Phạm Tấn Khải and lý chí học co-develop the program
 RISCV rv32 base-integer emulation 
 With 40 instructions.
 
